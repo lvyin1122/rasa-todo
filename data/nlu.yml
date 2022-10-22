@@ -1,73 +1,33 @@
 version: "2.0"
 nlu:
-- intent: order_status
+- intent: add_todo
   examples: |
-    - check status of my order
-    - when are my shoes coming in
-    - when will they get here
-    - I'd like to check the status of my order pls
-    - check status
-    - I'd like an update on my order
-    - Check status of my order
-    - I haven't received my order yet, can we check that?
-    - where is my order?
-    - I want to check the status of my order
-    - actually can I check the status of my order
-    - order status for example@rasa.com
-- intent: order_cancel
+    - 添加待办
+    - 我想添加待办
+    - 我想添加任务
+    - 我有新的任务
+    - 我有想做的事情
+    - 我有新的计划
+- intent: remove_todo
   examples: |
-    - i'd like to cancel my order
-    - cancel my shoes
-    - I changed my mind on my order
-    - cancel my order
-- intent: return
+    - 删除待办
+- intent: complete_todo
   examples: |
-    - start a return
-    - I don't want my shoes anymore
-    - how do I return these?
-    - return some shoes
-    - Which items are available to return?
-    - Start a return
-    - Okay. I would like to return some shoes I bought
-    - yeah I want to return something
-- intent: product_stock
+    - 完成待办
+- intent: list_todo
   examples: |
-    - do you have any [black](color) shoes in stock?
-    - what about [white](color) shoes
-    - what's your inventory
-    - are you out of size 9 shoes
-    - check inventory
-    - do you have my special shoes in stock
-    - Check inventory
-    - i'm looking for new shoes
-- intent: product_updates
+    - 待办清单
+- intent: inform_todo
   examples: |
-    - what's new on the site?
-    - how do I find out updates
-    - I'd like to sign up for updates
-    - Subscribe to product updates
-    - subscribe to updates
-    - i [don't](negation) want to subscribe
-    - I [do not](negation) subscribe
-- intent: inform
+    - 完成作业
+    - 提交申请
+    - 买菜
+    - 整理衣服
+- intent: inform_time
   examples: |
-    - example@rasa.com
-    - my email is example@yahoo.com
-    - it's example@gmail.com
-    - [black](color) shoes
-    - [white](color) ones
-    - I'm looking for [orange](color) shoes
-    - [brown](color)
-    - [blue](color)
-    - it's 123
-    - it's a@b.com
-    - xyz@hulaloo.ai
-    - gray
-    - [Maize](color) and [blue](color)
-    - wait actually that email is wrong. it should be asdf1@asdf.com
-    - asdf@asdf.com
-    - [Grey](color)
-    - test@test.com
+   - 星期日
+   - 周六
+   - 明天
 - intent: order_shoes
   examples: |
     - i want to buy shoes
@@ -95,6 +55,7 @@ nlu:
     - u stink
 - intent: greet
   examples: |
+    - 你好
     - hey
     - hello
     - hi
@@ -196,26 +157,9 @@ nlu:
     - see you later
 - intent: out_of_scope
   examples: |
-    - mmm I can't see what you're saying
-    - I am looking forward to my best friend's wedding. Do you have any tuxedo's?
-    - hmmmm
-    - Can I?
-    - Well, okay then
-    - what is the square root of 5
-    - I want to know the weather
-    - what is the meaning of life.
-    - Fridge Isn't Running
-    - my tv isn't working
-    - I want a pizza
-    - my washing machine isn't working
-    - what year is it
-    - order a pizza
-    - I want to order a pizza
-    - what is the weather today
-    - what is the weather
-    - why is the sky blue
-    - blah blah blah
+    - 巴拉巴拉
+    - 煎饼果子来一套
+    - 你怎么看叙利亚局势
 - intent: whats_your_name
   examples: |
-    - can you tell me your name?
-    - what's your name?
+    - 你的名字是什么？
