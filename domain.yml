@@ -12,14 +12,31 @@ intents:
 - whats_your_name
 - inform_todo
 - inform_time
-- add_todo
+- create_todo
 - remove_todo
 - complete_todo
 - list_todo
+- create_event
+- remove_event
+- list_event
 entities:
-- todo
+- number
+- time
 slots:
   todo:
+    type: text
+    influence_conversation: false
+  todo_list:
+    type: list
+    initial_value: []
+    influence_conversation: false
+  todo_number:
+    type: text
+    influence_conversation: false
+  event:
+    type: text
+    influence_conversation: false
+  event_datetime:
     type: text
     influence_conversation: false
 responses:
@@ -27,14 +44,44 @@ responses:
   - text: 你好，我是TodoBot。我可以帮助你记录和整理你的计划。你有什么想告诉我的吗？
   utter_default:
   - text: 我没有听懂，能再说一次吗？
-  utter_ask_add_todo_form_todo:
+  utter_ask_create_todo_form_todo:
   - text: 请告诉我您的待办名称
+  utter_ask_complete_todo_form_todo_number:
+  - text: 请告诉我您想删除的待办序号
   utter_todo_added:
   - text: 新的待办已添加：{todo}
+  utter_list_todo:
+  - text: 这是你现在的待办列表： {todo_list}
+  utter_ask_create_event_form_event:
+  - text: 请告诉我您的事件名称
+  utter_ask_create_event_form_event_datetime:
+  - text: 请告诉我您的事件时间
+  utter_event_added:
+  - text: 新的事件已添加：{event} {date_time}
+  utter_list_event:
+  - text: 这是你现在的事件列表：
+  utter_event_item:
+  - text: {event} {date_time}
 actions:
-- action_add_todo
+- action_create_todo
+- action_list_todo
+- action_complete_todo
+- action_create_event
+- action_list_event
 forms:
-  add_todo_form:
+  create_todo_form:
     required_slots:
       todo:
       - type: from_text
+  complete_todo_form:
+    required_slots:
+      todo_number:
+      - entity: number
+        type: from_entity
+  create_event_form:
+    required_slots:
+      event:
+      - type: from_text
+      event_datetime:
+      - entity: time
+        type: from_entity

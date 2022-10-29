@@ -1,6 +1,6 @@
 version: "2.0"
 nlu:
-- intent: add_todo
+- intent: create_todo
   examples: |
     - 添加待办
     - 我想添加待办
@@ -13,16 +13,36 @@ nlu:
     - 删除待办
 - intent: complete_todo
   examples: |
+    - 完成
     - 完成待办
+    - 任务完成
+    - 任务结束
 - intent: list_todo
   examples: |
     - 待办清单
+    - 现在清单里有什么
+- intent: create_event
+  examples: |
+   - 添加事件
+   - 我有新的事件
+   - 我有新的日程
+   - 帮我记录新的事件
+   - 帮我记录新的日程
+- intent: list_event
+  examples: |
+    - 事件清单
+    - 日程清单
+- intent: 
 - intent: inform_todo
   examples: |
-    - 完成作业
-    - 提交申请
-    - 买菜
-    - 整理衣服
+    - 第1号
+    - 第2个待办
+    - 第三项
+    - 第四个
+    - 1
+    - 4
+    - 六
+    - 八
 - intent: inform_time
   examples: |
    - 星期日
@@ -43,6 +63,9 @@ nlu:
     - correct
 - intent: deny
   examples: |
+    - 停下
+    - 不
+    - 不要
     - no
     - n
     - never

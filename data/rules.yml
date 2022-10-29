@@ -20,17 +20,86 @@ rules:
 
 - rule: add todo
   steps:
-  - intent: add_todo
+  - intent: create_todo
   - action: action_deactivate_loop
   - active_loop: null 
-  - action: add_todo_form
-  - active_loop: add_todo_form
+  - action: create_todo_form
+  - active_loop: create_todo_form
 
-- rule: add todo complete
+- rule: add todo finished
   condition:
-  - active_loop: add_todo_form
+  - active_loop: create_todo_form
   steps:
-  - action: add_todo_form
+  - action: create_todo_form
   - active_loop: null
-  - action: action_add_todo
-  
+  - action: action_create_todo
+
+# list todo
+
+- rule: list todo
+  steps:
+  - intent: list_todo
+  - action: action_list_todo
+
+# complete todo
+
+- rule: complete todo
+  steps:
+  - intent: complete_todo
+  - action: action_deactivate_loop
+  - active_loop: null 
+  - action: complete_todo_form
+  - active_loop: complete_todo_form
+
+- rule: complete todo finished
+  condition:
+  - active_loop: complete_todo_form
+  steps:
+  - intent: deny
+  - action: complete_todo_form
+  - active_loop: null
+  - action: action_list_todo
+
+# add event
+
+- rule: add event
+  steps:
+  - intent: create_event
+  - action: action_deactivate_loop
+  - active_loop: null 
+  - action: create_event_form
+  - active_loop: create_event_form
+
+- rule: add event finished
+  condition:
+  - active_loop: create_event_form
+  steps:
+  - action: create_event_form
+  - active_loop: null
+  - action: action_create_event
+
+# list event
+
+- rule: list event
+  steps:
+  - intent: list_event
+  - action: action_list_event
+
+# remind todo
+
+# - rule: remind todo
+#   steps:
+#   - intent: remind_todo
+#   - action: action_deactivate_loop
+#   - active_loop: null 
+#   - action: remind_todo_form
+#   - active_loop: remind_todo_form
+
+# - rule: remind todo finished
+#   condition:
+#   - active_loop: remind_todo_form
+#   steps:
+#   - intent: deny
+#   - action: remind_todo_form
+#   - active_loop: null
+#   - action: action_list_todo

@@ -27,17 +27,18 @@ pipeline:
   - name: FallbackClassifier
     threshold: 0.3
     ambiguity_threshold: 0.1
+  # Duckling HERE
   - name: "DucklingHTTPExtractor"
     # url of the running duckling server
     url: "http://localhost:8000"
     # dimensions to extract
-    dimensions: ["time"]
+    dimensions: ["time", "number"]
     # allows you to configure the locale, by default the language is
     # used
-    # locale: "de_DE"
+    locale: "zh_CN"
     # if not set the default timezone of Duckling is going to be used
     # needed to calculate dates from relative expressions like "tomorrow"
-    # timezone: "Europe/Berlin"
+    timezone: "Asia/Hong_Kong"
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
