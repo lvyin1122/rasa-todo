@@ -19,6 +19,7 @@ intents:
 - create_event
 - remove_event
 - list_event
+- list_events_by_days
 entities:
 - number
 - time
@@ -39,6 +40,9 @@ slots:
   event_datetime:
     type: text
     influence_conversation: false
+  event_list_days:
+    type: text
+    influence_conversation: false
 responses:
   utter_greet:
   - text: 你好，我是TodoBot。我可以帮助你记录和整理你的计划。你有什么想告诉我的吗？
@@ -51,23 +55,35 @@ responses:
   utter_todo_added:
   - text: 新的待办已添加：{todo}
   utter_list_todo:
-  - text: 这是你现在的待办列表： {todo_list}
+  - text: 这是你现在的待办清单： {todo_list}
+  utter_list_todo_complete:
+  - text: |-
+      这是你现在的待办清单： {todo_list} 
+      请告诉我您想删除的待办序号
+  utter_complete_todo:
+  - text: 待办已删除，这是你现在的待办清单：{todo_list}
   utter_ask_create_event_form_event:
   - text: 请告诉我您的事件名称
   utter_ask_create_event_form_event_datetime:
   - text: 请告诉我您的事件时间
   utter_event_added:
-  - text: 新的事件已添加：{event} {date_time}
+  - text: 新的事件已添加：{date_time} {event}
   utter_list_event:
-  - text: 这是你现在的事件列表：
+  - text: 这是你近期的日程：{event_list}
+  utter_list_events_by_days:
+  - text: 这是未来{days}天的日程：{event_list}
   utter_event_item:
-  - text: {event} {date_time}
+  - text: ·{date_time} {event}
+  utter_faq:
+  - text: 常见问题请联络程序
 actions:
 - action_create_todo
 - action_list_todo
+- action_list_todo_complete
 - action_complete_todo
 - action_create_event
 - action_list_event
+- action_list_events_by_days
 forms:
   create_todo_form:
     required_slots:
@@ -84,4 +100,9 @@ forms:
       - type: from_text
       event_datetime:
       - entity: time
+        type: from_entity
+  list_events_by_days_form:
+    required_slots:
+      event_list_days:
+      - entity: number
         type: from_entity

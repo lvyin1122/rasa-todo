@@ -109,6 +109,8 @@ venv.bak/
 .mypy_cache/
 
 # Rasa stuff
+corpus/
+train_test_split/
 models/
 events.db*
 rasa.db

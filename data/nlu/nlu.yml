@@ -1,29 +1,20 @@
 version: "2.0"
 nlu:
-- intent: create_todo
-  examples: |
-    - 添加待办
-    - 我想添加待办
-    - 我想添加任务
-    - 我有新的任务
-    - 我有想做的事情
-    - 我有新的计划
-- intent: remove_todo
-  examples: |
-    - 删除待办
-- intent: complete_todo
-  examples: |
-    - 完成
-    - 完成待办
-    - 任务完成
-    - 任务结束
 - intent: list_todo
   examples: |
     - 待办清单
+    - 待办列表
+    - 有什么待办
+    - 有什么任务
     - 现在清单里有什么
+    - 现在有哪些待办
+    - 现在的待办清单是怎样的
 - intent: create_event
   examples: |
    - 添加事件
+   - 添加日程
+   - 新的日程
+   - 新的事件
    - 我有新的事件
    - 我有新的日程
    - 帮我记录新的事件
@@ -32,7 +23,14 @@ nlu:
   examples: |
     - 事件清单
     - 日程清单
-- intent: 
+    - 最近还有什么事情
+    - 最近有什么日程
+- intent: list_events_by_days
+  examples: |
+    - 这五天我有什么日程
+    - 未来七天我有什么事情
+    - 这十天我需要做什么
+    - 这3天我要做什么
 - intent: inform_todo
   examples: |
     - 第1号
@@ -48,11 +46,6 @@ nlu:
    - 星期日
    - 周六
    - 明天
-- intent: order_shoes
-  examples: |
-    - i want to buy shoes
-    - no, don't want to do a return, want to purchase new shoes
-    - since they're in stock, how about I place an order
 - intent: affirm
   examples: |
     - yes

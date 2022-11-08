@@ -1,14 +1,5 @@
 version: "2.0"
 rules:
-- rule: respond to FAQs
-  steps:
-  - intent: faq
-  - action: utter_faq
-- rule: respond to chitchat
-  steps:
-  - intent: chitchat
-  - action: utter_chitchat
-
 - rule: out of scope
   steps:
   - or:
@@ -48,6 +39,7 @@ rules:
   - intent: complete_todo
   - action: action_deactivate_loop
   - active_loop: null 
+  - action: action_list_todo_complete
   - action: complete_todo_form
   - active_loop: complete_todo_form
 
@@ -55,10 +47,9 @@ rules:
   condition:
   - active_loop: complete_todo_form
   steps:
-  - intent: deny
   - action: complete_todo_form
   - active_loop: null
-  - action: action_list_todo
+  - action: action_complete_todo
 
 # add event
 
@@ -78,12 +69,30 @@ rules:
   - active_loop: null
   - action: action_create_event
 
-# list event
+# list events
 
-- rule: list event
+- rule: list the recent 10 events
   steps:
   - intent: list_event
   - action: action_list_event
+
+# list events by days
+
+- rule: list events by days
+  steps:
+  - intent: list_events_by_days
+  - action: action_deactivate_loop
+  - active_loop: null 
+  - action: list_events_by_days_form
+  - active_loop: list_events_by_days_form
+
+- rule: list events by days complete
+  condition:
+  - active_loop: list_events_by_days_form
+  steps:
+  - action: list_events_by_days_form
+  - active_loop: null
+  - action: action_list_events_by_days
 
 # remind todo
 
